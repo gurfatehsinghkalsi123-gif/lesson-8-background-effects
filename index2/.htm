@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weatherly - Weather Dashboard</title>
+
+<style>
+
+/* PAGE BACKGROUND */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #101c38;
+
+    background-image:
+        radial-gradient(circle at 20% 20%, #254b80 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, #503b81 0%, transparent 40%);
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 40px 20px;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* HEADER */
+
+header {
+    margin-bottom: 35px;
+}
+
+header h1 {
+    font-size: 38px;
+}
+
+header h1 span {
+    color: #64d8ff;
+}
+
+header p {
+    color: #b7c9e8;
+    margin-top: 8px;
+}
+
+/* WEATHER CARD */
+
+.weather-card {
+    padding: 35px;
+    border-radius: 25px;
+
+    background: linear-gradient(
+        135deg,
+        #3685d9,
+        #6654c7,
+        #9a58c4
+    );
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.weather-info h2 {
+    font-size: 75px;
+    margin: 15px 0;
+}
+
+.weather-info h3 {
+    font-size: 25px;
+}
+
+.location {
+    font-size: 17px;
+}
+
+.description {
+    margin-top: 10px;
+    color: #e0eaff;
+}
+
+/* WEATHER ICON ANIMATION */
+
+.weather-icon {
+    position: absolute;
+    right: 60px;
+    top: 35px;
+    font-size: 110px;
+
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* WEATHER DETAILS */
+
+.weather-details {
+    display: flex;
+    gap: 50px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.weather-details div {
+    text-align: center;
+}
+
+.weather-details span {
+    font-size: 25px;
+}
+
+.weather-details p {
+    color: #d8e5ff;
+    margin: 8px 0;
+}
+
+/* FORECAST SECTION */
+
+.forecast {
+    margin-top: 35px;
+    padding: 30px;
+    border-radius: 25px;
+
+    background: radial-gradient(
+        circle at top right,
+        #334f86,
+        #192746,
+        #111c35
+    );
+
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.forecast h2 {
+    margin-bottom: 25px;
+}
+
+/* FORECAST DAYS */
+
+.forecast-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.day {
+    padding: 20px 10px;
+    text-align: center;
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+}
+
+.day:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.17);
+}
+
+.day span {
+    display: block;
+    font-size: 35px;
+    margin: 15px 0;
+}
+
+.day h3 {
+    margin-bottom: 8px;
+}
+
+.day p {
+    color: #bdcbea;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    margin-top: 35px;
+    color: #aabbd8;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 650px) {
+
+    .forecast-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .weather-icon {
+        right: 20px;
+        top: 40px;
+        font-size: 65px;
+    }
+
+    .weather-info h2 {
+        font-size: 55px;
+    }
+
+    .weather-details {
+        gap: 25px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Weather<span>ly.</span></h1>
+        <p>Your daily weather companion</p>
+    </header>
+
+    <!-- MAIN WEATHER CARD -->
+
+    <section class="weather-card">
+
+        <div class="weather-info">
+            <p class="location">📍 New Delhi, India</p>
+            <h2>28°C</h2>
+            <h3>Partly Cloudy</h3>
+            <p class="description">
+                A beautiful day with some clouds.
+            </p>
+        </div>
+
+        <div class="weather-icon">
+            🌤️
+        </div>
+
+        <div class="weather-details">
+
+            <div>
+                <span>💧</span>
+                <p>Humidity</p>
+                <h3>65%</h3>
+            </div>
+
+            <div>
+                <span>💨</span>
+                <p>Wind Speed</p>
+                <h3>12 km/h</h3>
+            </div>
+
+            <div>
+                <span>🌡️</span>
+                <p>Feels Like</p>
+                <h3>30°C</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FORECAST -->
+
+    <section class="forecast">
+
+        <h2>5-Day Forecast</h2>
+
+        <div class="forecast-container">
+
+            <div class="day">
+                <p>Monday</p>
+                <span>☀️</span>
+                <h3>30°C</h3>
+                <p>Sunny</p>
+            </div>
+
+            <div class="day">
+                <p>Tuesday</p>
+                <span>🌧️</span>
+                <h3>25°C</h3>
+                <p>Rainy</p>
+            </div>
+
+            <div class="day">
+                <p>Wednesday</p>
+                <span>⛅</span>
+                <h3>27°C</h3>
+                <p>Cloudy</p>
+            </div>
+
+            <div class="day">
+                <p>Thursday</p>
+                <span>🌤️</span>
+                <h3>29°C</h3>
+                <p>Clear</p>
+            </div>
+
+            <div class="day">
+                <p>Friday</p>
+                <span>⛈️</span>
+                <h3>23°C</h3>
+                <p>Stormy</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        Made with ❤️ | Weatherly Dashboard
+    </footer>
+
+</div>
+
+</body>
+</html>
